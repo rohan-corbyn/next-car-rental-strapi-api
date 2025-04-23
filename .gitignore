@@ -4,3 +4,4 @@ build/
 .tmp/
 .strapi/
 public/uploads/
+node_modules/
