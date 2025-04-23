@@ -1,0 +1,6 @@
+.env
+.cache/
+build/
+.tmp/
+.strapi/
+public/uploads/
