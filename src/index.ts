@@ -1,20 +1,18 @@
-// import type { Core } from '@strapi/strapi';
+// apps/strapi-api/src/index.js
+const fs = require("fs");
+const path = require("path");
 
-export default {
-  /**
-   * An asynchronous register function that runs before
-   * your application is initialized.
-   *
-   * This gives you an opportunity to extend code.
-   */
-  register(/* { strapi }: { strapi: Core.Strapi } */) {},
+module.exports = {
+  register() {},
 
-  /**
-   * An asynchronous bootstrap function that runs before
-   * your application gets started.
-   *
-   * This gives you an opportunity to set up your data model,
-   * run jobs, or perform some special logic.
-   */
-  bootstrap(/* { strapi }: { strapi: Core.Strapi } */) {},
+  bootstrap() {
+    const uploadPath = path.join(__dirname, "../public/uploads");
+
+    if (!fs.existsSync(uploadPath)) {
+      fs.mkdirSync(uploadPath, { recursive: true });
+      console.log("✅ Uploads folder created at runtime");
+    } else {
+      console.log("✅ Uploads folder already exists");
+    }
+  },
 };
